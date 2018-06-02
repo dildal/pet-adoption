@@ -17,23 +17,23 @@ export class AnimalsService {
   }
 
   createAnimal(animal: Animal){
-  	return this.http.post('api/animals', animal).pipe(
+  	return this.http.post('/api/animals', animal).pipe(
       map(res => res.json())
     );
 	}
   
   showAnimal(id){
-  	return this.http.get('api/animals/'+id).pipe(
+  	return this.http.get('/api/animals/'+id).pipe(
   		map(res => res.json())
   	);
   }
 
   deleteAnimal(id){
-    return this.http.delete('api/animals/'+id);
+    return this.http.delete('/api/animals/'+id);
   }
 
   editAnimal(id, animal: Animal){
-    return this.http.put('api/animals/'+id, animal).pipe(
+    return this.http.put('/api/animals/'+id, animal).pipe(
       map(res => res.json())
     );
   }
