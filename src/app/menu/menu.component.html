@@ -1,0 +1,19 @@
+<button mat-button color="primary" [matMenuTriggerFor]="meet">Meet An Animal</button>
+<mat-menu #meet="matMenu">
+	<button mat-menu-item color="primary" [matMenuTriggerFor]="cats">Cats</button>
+  	<button mat-menu-item  color="primary" [matMenuTriggerFor]="dogs">Dogs</button>
+  	<button mat-menu-item color="primary" [matMenuTriggerFor]="other">Other</button>
+</mat-menu>
+	
+<mat-menu #cats="matMenu">
+	<a *ngFor="let animal of animals | filterType : 'cat'" [routerLink]="['/animal-details', animal._id]"><button mat-menu-item class="accent">{{animal.name}}</button></a>
+</mat-menu>
+
+<mat-menu #dogs="matMenu">
+	<a *ngFor="let animal of animals | filterType : 'dog'" [routerLink]="['/animal-details', animal._id]"><button mat-menu-item class="accent">{{animal.name}}</button></a>
+</mat-menu>
+
+<mat-menu #other="matMenu">
+	<a *ngFor="let animal of animals | filterType" [routerLink]="['/animal-details', animal._id]"><button mat-menu-item class="accent">{{animal.name}}</button></a>
+</mat-menu>
+

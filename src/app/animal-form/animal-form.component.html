@@ -1,0 +1,67 @@
+<form>
+	<div class="form-container">
+		<mat-form-field>
+			<input required matInput placeholder="name" name="name" [(ngModel)]="newAnimal.name">
+		</mat-form-field>
+
+		<mat-form-field>
+			<input required matInput placeholder="type" name="type"[(ngModel)]="newAnimal.type">
+		</mat-form-field>
+
+		<mat-form-field>
+			<input required type="number" matInput placeholder="age" name="age"[(ngModel)]="newAnimal.age">
+		</mat-form-field>
+
+
+		<mat-form-field>
+			<mat-select required name="sex" [(ngModel)]="newAnimal.sex" placeholder="sex">
+				<mat-option value="female">Female</mat-option>
+				<mat-option value="male">Male</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<textarea matInput name="bio" [(ngModel)]="newAnimal.bio" placeholder="bio"></textarea>
+		</mat-form-field>
+
+		<mat-form-field>
+			<input matInput placeholder="Image Url of your animal" name="picture" [(ngModel)]="newAnimal.picture">
+		</mat-form-field>
+
+		<mat-slide-toggle name="fixed" [(ngModel)]="newAnimal.fixed">Fixed?</mat-slide-toggle>
+		<h4>Shots</h4>
+		
+		<mat-form-field>
+		  <mat-chip-list #chipList>
+		    <mat-chip
+		      *ngFor="let shot of newAnimal.shots"
+		      [selectable]="selectable"
+		      [removable]="removable"
+		      (removed)="remove(newAnimal.shots)">
+		      {{shot}}
+		      <mat-icon matChipRemove *ngIf="removable" svgIcon="cancel"></mat-icon>
+		    </mat-chip>
+		    <input
+		      placeholder="New shot..."
+		      #shotInput
+		      [formControl]="shotCtrl"
+		      [matAutocomplete]="auto"
+		      [matChipInputFor]="chipList"
+		      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+		      [matChipInputAddOnBlur]="addOnBlur"
+		      (matChipInputTokenEnd)="add($event)"
+		    />
+		  </mat-chip-list>
+
+		  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+		    <mat-option *ngFor="let shot of filteredShots | async" [value]="shot">
+		      {{ shot }}
+		    </mat-option>
+		  </mat-autocomplete>
+		</mat-form-field>
+
+		<button matButton type="submit" (click)="create()">Put up for adoption</button>
+	</div>
+</form>
+
+			

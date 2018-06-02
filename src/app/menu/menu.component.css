@@ -1,0 +1,11 @@
+.accent{
+	color: #ffd740;
+}
+
+.accent:hover{
+	background: rgba(255,215,64,.04)
+}
+
+a {
+	text-decoration: none;
+}
