@@ -16,17 +16,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 mongoose.connect(process.env.MONGODB_URI)
 
 
-// Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist/giji-homework')));
-
-// Set our api routes
 app.use('/api', api);
 
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/index.html'));
+// Point static path to dist
+app.use(express.static(__dirname + '/dist'));
+
+app.get('/*', function(req,res) {
+    
+	res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
 
+// Set our api routes
+
+
+// Catch all other routes and return the index file
 /**
  * Get port from environment and store in Express.
  */
