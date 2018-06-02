@@ -10,7 +10,7 @@ import {MenuItem} from 'primeng/api';
 
 export class NavComponent implements OnInit {
 	
-  private items: MenuItem[];
+  items: MenuItem[];
   edit: Boolean = false;
   constructor() { }
 

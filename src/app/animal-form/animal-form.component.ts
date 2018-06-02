@@ -21,7 +21,7 @@ export class AnimalFormComponent implements OnInit {
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
-  addOnBlue: boolean = false;
+  addOnBlur: boolean = false;
 
   public newAnimal: Animal = new Animal();
   animal : any;
