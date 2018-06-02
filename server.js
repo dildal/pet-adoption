@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //connect to database
-mongoose.connect('mongodb://127.0.0.1:27017/goji_Homework')
+mongoose.connect(process.env.MONGODB_URI)
 
 
 // Point static path to dist
